@@ -1,0 +1,189 @@
+1.	Write the command to print out the structure (describe) of the following tables:
+Employees
+Departments
+Locations
+jobs
+DESC Employees;
+DESC Departments;
+DESC Locations;
+DESC jobs;
+2.	Write a SQL query to display complete information about the employees
+a.	SELECT * FROM employees;
+
+
+3.	write a SQL query to display the salaries of all employees. Return salary. 
+a.	SELECT salary FROM employees;
+
+
+4.	write a SQL query to find the unique designations of the employees. Return job name.  
+a.	SELECT DISTINCT job_name FROM employees;
+
+
+5.	Write a query to delete records of employee whose emp_id is 10. 
+a.	delete from employees where emp_id=10;
+
+6.	Delete the records of all employees whose salary is greater than 2500 expect the president 
+
+7.	Write a query to delete all records from department table. 
+
+8.	Update the commission of all employees to 200/-  whose salary is less than 3000/-. 
+
+9.	Update salary by 500 and change the commission to 1000 for all analysts working in the company. 
+
+10.	write a SQL query to find the employee ID, salary, and commission of all the employees. 
+a.	SELECT emp_id,salary,commission FROM employees;
+
+
+11.	write a SQL query to find the unique department with jobs. Return department ID, Job name.
+a.	SELECT DISTINCT dep_id,job_name FROM employees ;
+
+
+12.	write a SQL query to find those employees who do not belong to the department 90. Return complete information about the employees. 
+a.	SELECT * FROM employees WHERE dep_id NOT IN (90);
+
+
+13.	 write a SQL query to compute the average salary of those employees who work as ‘IT_prog’. Return average salary. 
+a.	SELECT avg(salary) FROM employees WHERE job_name = 'ANALYST';
+
+
+14.	 write a SQL query to find the details of the employee ‘NEENA’. 
+a.	SELECT * FROM employees WHERE emp_name = 'NEENA';
+
+15.	write a SQL query to find those employees whose commission is more than 0.3. Return complete information about the employees.
+a.	SELECT * FROM employees WHERE commission>0.3;
+
+16.	Write a SQL query to find those employees whose salary exceeds 3000 after giving 25% increment. Return complete information about the employees.
+a.	SELECT * FROM employees WHERE (1.25*salary) > 3000;
+
+17.	write a SQL query to find those employees whose salaries are less than 3500. Return complete information about the employees. 
+a.	SELECT * FROM employees WHERE salary <3500;
+
+
+18.	write a SQL query to find those employees who are not working under a manager. Return employee name, job name.
+a.	SELECT e.emp_name, e.job_name FROM employees e WHERE manager_id IS NULL;
+
+19.	write a SQL query to calculate total salary of all employees. Return total
+a.	SELECT SUM (salary) FROM employees;
+
+20.	List out the employee who are earning salary between 3000 and 4000.
+a.	Select * from employee where salary between 3000 and 4000;
+
+21.	List out employee who are working in department 10 or 20. (IN)
+a.	select * from employee where dept_id IN (10,20);
+
+22.	List out employee who are not working in department 10 or 20. (NOT IN)
+a.	select * from employee where dept_id NOT IN (10,20);
+
+23.	List out countries whose name starts with “S”.
+a.	select count_name from countries where count_name LIKE ‘S%’;
+
+24.	List out countries whose name starts with “S” and end with “D”.
+a.	select count_name from countries where count_name LIKE ‘S%D’;
+
+25.	List out employee whose name end with “I”.
+a.	select emp_name from employees where emp_name LIKE ‘%I’ 
+
+26.	List out employee who are working in department 10 and draw salary more than 9000.
+a.	select * from employees where dept_id=10 and salary>9000;
+
+27.	List out employees who are not receiving any commission.
+a.	select * from employees where commission is NULL;
+
+28.	List out department wise maximum salary, minimum salary and average salary of the employees.
+a.	select dept_id, max(salary), min(salary), avg(salary) from employees 
+group by dept_id;
+
+29.	List out employee details according to their salaries in descending order.
+a.	select * from employees order by salary desc
+
+30.	Display Emp number, emp_name, salary, phone number and department name where department name is ACCOUNTING.(INNER JOIN)
+a.	select e.employee_id, e.salary, e.phone_number, d.department_name from hr.employees e inner join hr.departments d on e.employee_id = d.department_id where d.department_name = 'Accounting';
+
+31.	Display Employee number, emp name and its dept name (NATURAL JOIN)
+a.	select emp_no, emp_name, dept_name from employees e natural join department d on e. dept_id = d. dept_id;
+
+32.	Display Dept number, Dept name and its employee name (NATURAL JOIN)
+a.	select emp_no, emp_name, dept_name from department d natural join employees e on d. dept_id = e. dept_id;
+
+33.	Display Emp number and Department name whose department name starts with 'A%'. (INNER JOIN)
+a.	select emp_no, dept_name from employees e inner join department d on  e. dept_id = d. dept_id where d. dept_name LIKE ‘S%’
+
+34.	Write a query to display the full name (first and last name), and salary for those employees who earn below 5000.
+SELECT FIRST_NAME||’ ‘||LAST_NAME AS FULL_NAME FROM EMPLOYEES WHERE SALARY < 5000;
+35.	Write a query to display all the information for all employees without a department id.
+SELECT  EMPNO, FIRST_NAME, LAST_NAME, JOB, MANAGER_ID, HIREDATE,SALARY, COMMISION FROM    EMPLOYEES;
+36.	Write a query to display the first and last name, email, salary and manager ID, for those employees whose managers hold the ID 100, 120 ,145, 149.
+SELECT FIRST_NAME,
+                 LAST_NAME,
+                 EMAIL,
+                 SALARY,
+                 MANAGER_ID
+FROM     EMPLOYEES
+WHERE  MANAGER_ID IN (100,120,145,149);
+37.	Display first name and join date of the employees who is either IT Programmer or Sales Man.
+a.	SELECT FIRST_NAME, HIRE_DATE FROM EMPLOYEES WHERE JOB_ID IN ('IT_PROG', 'SA_MAN')
+
+38.	Display employees who joined after 1st January 2008.
+a.	SELECT * FROM EMPLOYEES  where hire_date > '01-jan-2008'
+
+39.	Display details of employee with ID 150 or 160.
+a.	SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID in (150,160)
+40.	Display first name, salary, commission pct, and hire date for employees with salary less than 10000.
+a.	SELECT FIRST_NAME, SALARY, COMMISSION_PCT, HIRE_DATE FROM EMPLOYEES WHERE SALARY < 10000
+
+41.	Display details of jobs in the descending order of the title.
+a.	SELECT * FROM JOBS ORDER BY JOB_TITLE
+
+42.	Display employees where the first name or last name starts with S.
+a.	SELECT FIRST_NAME, LAST_NAME FROM EMPLOYEES WHERE  FIRST_NAME  LIKE 'S%' OR LAST_NAME LIKE 'S%'
+
+43.	Display employees who joined in the month of May.
+a.SELECT * FROM EMPLOYEES WHERE TO_CHAR(HIRE_DATE, 'MON')= 'MAY'
+44.	Display details of the employees where commission percentage is null and salary in the range 5000 to 10000 and department is 30.
+a.	SELECT * FROM EMPLOYEES WHERE COMMISSION_PCT IS NULL AND SALARY BETWEEN 5000 AND 10000 AND DEPARTMENT_ID=30
+
+45.	Display manager ID and number of employees managed by the manager.
+a.	SELECT MANAGER_ID, COUNT(*) FROM EMPLOYEES GROUP BY MANAGER_ID
+
+46.	Display the country ID and number of cities we have in the country.
+a.	SELECT COUNTRY_ID,  COUNT(*)  FROM LOCATIONS GROUP BY COUNTRY_ID
+
+47.	Display average salary of employees in each department who have commission percentage.
+a.	SELECT DEPARTMENT_ID, AVG(SALARY) FROM EMPLOYEES WHERE COMMISSION_PCT IS NOT NULL GROUP BY DEPARTMENT_ID
+
+48.	Display job ID for jobs with average salary more than 10000.
+a.	SELECT JOB_ID, AVG(SALARY) FROM EMPLOYEES GROUP BY JOB_ID HAVING AVG(SALARY)>10000
+
+49.	Change salary of employee 115 to 8000 if the existing salary is less than 6000.
+
+50.	UPDATE EMPLOYEES SET SALARY = 8000 WHERE EMPLOYEE_ID = 115 AND SALARY < 6000
+
+51.	Delete department 20.
+
+52.	DELETE FROM DEPARTMENTS WHERE DEPARTMENT_ID=20
+
+53.	Insert a new employee into employees with all the required details.
+a.	INSERT INTO EMPLOYEES  (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE,JOB_ID, SALARY, DEPARTMENT_ID)
+VALUES (207, 'ANGELA', 'SNYDER','ANGELA','215 253 4737', SYSDATE, 'SA_MAN', 12000, 80)
+54.	Insert a row into departments table with manager ID 120 and location ID in any location ID for city Tokyo.
+a.	INSERT INTO DEPARTMENTS VALUES(150,'SPORTS',120,1200)
+
+55.	Display department name and manager first name.(JOIN)
+a.	SELECT DEPARTMENT_NAME, FIRST_NAME FROM DEPARTMENTS D JOIN EMPLOYEES E ON (D.MANAGER_ID=E.EMPLOYEE_ID)
+
+56.	Display department name, manager name. (JOIN)
+a.	SELECT DEPARTMENT_NAME, FIRST_NAME FROM DEPARTMENTS D JOIN EMPLOYEES E ON (D.MANAGER_ID=E.EMPLOYEE_ID) 
+
+57.	Display country name AND city (JOIN)
+a.	SELECT COUNTRY_NAME, CITY, DEPARTMENT_NAME FROM COUNTRIES C JOIN LOCATIONS L ON C.COUNTRY_ID=L.COUNTRY_ID
+
+58.	Display job title and average salary of employees
+a.	SELECT JOB_TITLE, AVG(SALARY) FROM EMPLOYEES NATURAL JOIN JOBS GROUP BY JOB_TITLE
+
+59.	Display details of departments managed by ‘Smith’. (in)
+a.	SELECT * FROM DEPARTMENTS WHERE MANAGER_ID IN   (SELECT EMPLOYEE_ID FROM EMPLOYEES WHERE FIRST_NAME='SMITH')
+
+60.	Display employees who did not do any job in the past.
+a.	SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID NOT IN    	(SELECT EMPLOYEE_ID FROM JOB_HISTORY)
+
+
